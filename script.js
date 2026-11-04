@@ -20,6 +20,6 @@ function drawShow(t){
  ctx.globalAlpha=a*.45;ctx.strokeStyle=p.color;ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x-p.vx*2,p.y-p.vy*2);ctx.stroke();}
  ctx.restore();ctx.globalAlpha=1;ctx.shadowBlur=0;
 }
-function frame(t){ctx.clearRect(0,0,w,h);if(Date.now()>=target)drawShow(t);else{if(t>=nextMeteor){meteor();nextMeteor=t+2500+Math.random()*4500;}drawMeteors();}requestAnimationFrame(frame);}
+function frame(t){ctx.clearRect(0,0,w,h);drawShow(t);requestAnimationFrame(frame);}
 function timer(){let left=Math.max(0,target-Date.now()),d=Math.floor(left/86400000);left%=86400000;let hh=Math.floor(left/3600000);left%=3600000;let mm=Math.floor(left/60000),ss=Math.floor(left%60000/1000);$('days').textContent=String(d).padStart(2,'0');$('hours').textContent=String(hh).padStart(2,'0');$('minutes').textContent=String(mm).padStart(2,'0');$('seconds').textContent=String(ss).padStart(2,'0');}
 timer();setInterval(timer,250);requestAnimationFrame(frame);
