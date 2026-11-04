@@ -9,3 +9,11 @@
 body::before{content:'';position:fixed;left:50%;top:48%;transform:translate(-50%,-50%);width:min(48vw,820px);height:17vh;background:#020208;z-index:1;pointer-events:none}
 #fireworks{z-index:2}.timer{z-index:3}
 @media(max-width:600px){body::before{width:76vw;height:12vh;top:47%}}
+
+/* Darken the open sky: hide baked-in stars while retaining edge clouds and horizon */
+body::after{
+ content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+ background:
+ radial-gradient(ellipse 72% 66% at 50% 30%,rgba(0,0,0,.99) 0%,rgba(0,0,0,.96) 54%,rgba(0,0,0,.72) 72%,transparent 100%);
+}
+#fireworks{z-index:2}.timer{z-index:3}
