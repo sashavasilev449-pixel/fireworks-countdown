@@ -17,6 +17,6 @@ function scene(t){
 }
 function spawnMeteor(){meteors.push({x:w*(.15+Math.random()*.75),y:h*(.04+Math.random()*.4),vx:-(.18+Math.random()*.35),vy:.16+Math.random()*.28,life:240,len:20+Math.random()*24});}
 function drawMeteors(){meteors=meteors.filter(m=>m.life>0);ctx.save();ctx.globalCompositeOperation='lighter';for(const m of meteors){m.x+=m.vx;m.y+=m.vy;m.life--;let alpha=Math.min(1,m.life/45);ctx.strokeStyle='rgba(255,222,155,'+(.65*alpha)+')';ctx.lineWidth=1.2;ctx.shadowBlur=8;ctx.shadowColor='#ffd98b';ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.lineTo(m.x-m.vx*m.len,m.y-m.vy*m.len);ctx.stroke();ctx.fillStyle='#fff7df';ctx.beginPath();ctx.arc(m.x,m.y,1.1,0,6.28);ctx.fill();}ctx.restore();}
-function frame(t){scene(t);if(t-lastMeteor>7000+Math.random()*12000){spawnMeteor();lastMeteor=t;}drawMeteors();requestAnimationFrame(frame);}
+function frame(t){ctx.clearRect(0,0,w,h);if(t-lastMeteor>7000+Math.random()*12000){spawnMeteor();lastMeteor=t;}drawMeteors();requestAnimationFrame(frame);}
 function timer(){let left=Math.max(0,target-Date.now()),d=Math.floor(left/86400000);left%=86400000;let hh=Math.floor(left/3600000);left%=3600000;let mm=Math.floor(left/60000),ss=Math.floor(left%60000/1000);$('days').textContent=String(d).padStart(2,'0');$('hours').textContent=String(hh).padStart(2,'0');$('minutes').textContent=String(mm).padStart(2,'0');$('seconds').textContent=String(ss).padStart(2,'0');}
 timer();setInterval(timer,250);requestAnimationFrame(frame);
