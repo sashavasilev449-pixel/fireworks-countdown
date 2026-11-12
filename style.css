@@ -17,3 +17,23 @@ body::after{
  radial-gradient(ellipse 72% 66% at 50% 30%,rgba(0,0,0,.99) 0%,rgba(0,0,0,.96) 54%,rgba(0,0,0,.72) 72%,transparent 100%);
 }
 #fireworks{z-index:2}.timer{z-index:3}
+
+/* Mobile layout fixes */
+@media (max-width: 600px){
+ html,body{width:100%;height:100%;height:100dvh}
+ body{background-position:center center;background-size:auto 100%;background-attachment:scroll}
+ .timer{padding:12px;width:100%;inset:0}
+ .time{width:100%;max-width:100%;gap:clamp(3px,1.3vw,8px);justify-content:center;white-space:nowrap}
+ .time span{min-width:0;flex:0 1 auto}
+ .time b{font-size:clamp(21px,6.3vw,33px);letter-spacing:-.055em}
+ .time i{font-size:clamp(16px,4.5vw,23px);transform:translateY(-4px)}
+ .time small{font-size:clamp(6px,1.7vw,8px);letter-spacing:.04em;margin-top:7px}
+ body::before{width:88vw;height:10vh;top:47%}
+ body::after{background:radial-gradient(ellipse 95% 58% at 50% 30%,rgba(0,0,0,.99) 0%,rgba(0,0,0,.94) 58%,rgba(0,0,0,.55) 78%,transparent 100%)}
+}
+@media (max-width:360px){
+ .time{gap:2px}
+ .time b{font-size:20px}
+ .time i{font-size:15px}
+ .time small{font-size:6px}
+}
